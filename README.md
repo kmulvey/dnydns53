@@ -1,5 +1,5 @@
 # dnydns53
-dnydns using AWS Route 53
+Dynamic DNS using AWS Route 53
 
 
 ##
