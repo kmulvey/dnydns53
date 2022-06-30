@@ -7,6 +7,7 @@ import (
 	"net"
 	"net/http"
 	"strings"
+	"time"
 
 	log "github.com/sirupsen/logrus"
 
@@ -103,13 +104,30 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	var changeID = strings.ReplaceAll(*dnsResp.ChangeInfo.Id, "/change/", "")
 
 	log.WithFields(log.Fields{
 		"status":    dnsResp.ChangeInfo.Status,
-		"id":        *dnsResp.ChangeInfo.Id,
+		"id":        changeID,
 		"submitted": dnsResp.ChangeInfo.SubmittedAt,
 	}).Info("Submitted")
 
-	//func (c *Client) GetChange(ctx context.Context, params *GetChangeInput, optFns ...func(*Options)) (*GetChangeOutput, error)
+	// wait for propagation
+	var status = dnsResp.ChangeInfo.Status
+	for status == dnsResp.ChangeInfo.Status {
+		time.Sleep(time.Second * 10)
 
+		var statusParams = &route53.GetChangeInput{Id: &changeID}
+		statusResp, err := dnsClient.GetChange(ctx, statusParams)
+		if err != nil {
+			log.Fatal(err)
+		}
+		status = statusResp.ChangeInfo.Status
+
+		log.WithFields(log.Fields{
+			"status":    statusResp.ChangeInfo.Status,
+			"id":        changeID,
+			"submitted": statusResp.ChangeInfo.SubmittedAt,
+		}).Info("Waiting for propagation")
+	}
 }
