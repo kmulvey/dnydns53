@@ -8,7 +8,7 @@ on:
       - "*"
 jobs:
   release:
-    name: cyberpower_exporter release
+    name: dnydns release
     runs-on: ubuntu-latest
 
     steps:
