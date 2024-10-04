@@ -5,7 +5,7 @@ go 1.21
 require (
 	github.com/aws/aws-sdk-go-v2 v1.31.0
 	github.com/aws/aws-sdk-go-v2/config v1.27.38
-	github.com/aws/aws-sdk-go-v2/service/route53 v1.44.2
+	github.com/aws/aws-sdk-go-v2/service/route53 v1.44.4
 	github.com/sirupsen/logrus v1.9.3
 )
 
