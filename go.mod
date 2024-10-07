@@ -3,7 +3,7 @@ module github.com/kmulvey/dnydns53
 go 1.21
 
 require (
-	github.com/aws/aws-sdk-go-v2 v1.31.0
+	github.com/aws/aws-sdk-go-v2 v1.32.0
 	github.com/aws/aws-sdk-go-v2/config v1.27.38
 	github.com/aws/aws-sdk-go-v2/service/route53 v1.44.2
 	github.com/sirupsen/logrus v1.9.3
@@ -20,7 +20,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/sso v1.23.2 // indirect
 	github.com/aws/aws-sdk-go-v2/service/ssooidc v1.27.2 // indirect
 	github.com/aws/aws-sdk-go-v2/service/sts v1.31.2 // indirect
-	github.com/aws/smithy-go v1.21.0 // indirect
+	github.com/aws/smithy-go v1.22.0 // indirect
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
 	golang.org/x/sys v0.25.0 // indirect
 )
